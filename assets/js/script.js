@@ -32,14 +32,14 @@ let contents = document.querySelectorAll(".tab-menu .tab-body div");
 
 
 headers.forEach(header => {
-    header.addEventListener("click",function(){
+    header.addEventListener("click", function () {
         let activeElem = document.querySelector(".active");
         activeElem.classList.remove("active");
         this.classList.add("active");
         contents.forEach(content => {
-            if(this.getAttribute("data-id") == content.getAttribute("data-id")){
+            if (this.getAttribute("data-id") == content.getAttribute("data-id")) {
                 content.classList.remove("d-none")
-            }else{
+            } else {
                 content.classList.add("d-none")
             }
         });
@@ -67,31 +67,39 @@ headers.forEach(header => {
 let rightIcon = document.querySelector("#slider-area .slider .icons .right i");
 let leftIcon = document.querySelector("#slider-area .slider .icons .left i");
 
+setInterval(function () {
+    sliderRight();
 
-rightIcon.addEventListener("click",function(){
+}, 3000);
+
+
+rightIcon.addEventListener("click", function () {
+    sliderRight();
+})
+
+
+function sliderRight(){
     let activeImg = document.querySelector("#slider-area .slider .img .active");
-    
-    if(activeImg.nextElementSibling != null){
+
+    if (activeImg.nextElementSibling != null) {
         activeImg.classList.remove("active");
         activeImg.nextElementSibling.classList.add("active");
-    }else{
+    } else {
         activeImg.classList.remove("active");
         activeImg.parentNode.firstElementChild.classList.add("active")
     }
-    
+}
 
-})
-
-leftIcon.addEventListener("click",function(){
+leftIcon.addEventListener("click", function () {
     let activeImg = document.querySelector("#slider-area .slider .img .active");
-    
-    if(activeImg.previousElementSibling != null){
+
+    if (activeImg.previousElementSibling != null) {
         activeImg.classList.remove("active");
         activeImg.previousElementSibling.classList.add("active");
-    }else{
+    } else {
         activeImg.classList.remove("active");
         activeImg.parentNode.lastElementChild.classList.add("active")
     }
-    
+
 
 })
